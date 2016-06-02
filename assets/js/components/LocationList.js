@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import LocationItem from './LocationItem';
 
-export default class LocationList extends Component {
+export default class LocationList extends React.Component {
 	render() {
 		let self = this;
 		let locations = this.props.locations.map( (l) => {

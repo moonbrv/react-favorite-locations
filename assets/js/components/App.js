@@ -1,5 +1,5 @@
 // import libraries
-import React, {Component} from 'react';
+import React from 'react';
 
 //import components
 import Search from './Search';
@@ -7,7 +7,7 @@ import Map from './Map';
 import CurrentLocation from './CurrentLocation';
 import LocationList from './LocationList';
 
-export default class App extends Component {
+export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		let favorites = [];

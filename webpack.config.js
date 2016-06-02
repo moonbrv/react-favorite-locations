@@ -24,7 +24,8 @@ module.exports = {
 	output: {
 		path: __dirname + '/public/js',
 		publicPath: '/',
-		filename: 'bundle.js',
+		filename: '[name].bundle.js',
+		chunkFilename: '[id].bundle.js'
 	},
 
 	devtool: NODE_ENV == 'development' ? 'cheap-module-source-map': null,
@@ -59,7 +60,7 @@ module.exports = {
 				query: {
 					cacheDirectory: true
 				}
-			},
+			}
 		]
 	},
 
@@ -75,6 +76,7 @@ module.exports = {
 	plugins: [
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.optimize.UglifyJsPlugin({
+			minimize: true,
 			compress: {
 				warnings: false
 			},
@@ -92,6 +94,7 @@ module.exports = {
 			{
 				allChunks: true,
 				disable: NODE_ENV == 'development'
-			})
+			}
+		)
 	]
 }

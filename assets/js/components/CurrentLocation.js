@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class CurrentLocation extends Component {
+export default class CurrentLocation extends React.Component {
 	toggleFavorite = () => {
 		this.props.onFavoriteToggle(this.props.address);
 	}
