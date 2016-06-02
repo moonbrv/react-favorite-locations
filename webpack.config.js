@@ -15,15 +15,16 @@ module.exports = {
 		extensions: ['', '.js', '.css', '.json']
 	},
 
-	entry:  {
-		//polyfill: 'babel-polyfill',
-		main: __dirname + '/assets/js/index.js'
-	},
+	entry:  ['babel-polyfill' , __dirname + '/assets/js/index.js'],
+		/*{
+			polyfill: 'babel-polyfill',
+			main: __dirname + '/assets/js/index.js'
+		},*/
 	
 	output: {
 		path: __dirname + '/public/js',
 		publicPath: '/',
-		filename: 'bundle.js'
+		filename: 'bundle.js',
 	},
 
 	devtool: NODE_ENV == 'development' ? 'cheap-module-source-map': null,
