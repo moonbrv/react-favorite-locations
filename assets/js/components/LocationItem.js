@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import moment from 'moment';
 
 export default class LocationItem extends Component {

@@ -1,5 +1,5 @@
 {
-  "name": "React favorite locations app",
+  "name": "React-favorite-locations-app",
   "version": "0.1.0",
   "main": "webpack.config.js",
   "devDependencies": {

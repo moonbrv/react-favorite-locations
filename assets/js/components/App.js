@@ -1,5 +1,5 @@
 // import libraries
-import {Component} from 'react';
+import React, {Component} from 'react';
 
 //import components
 import Search from './Search';

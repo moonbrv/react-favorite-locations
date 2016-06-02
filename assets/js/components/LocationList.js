@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import LocationItem from './LocationItem';
 
 export default class LocationList extends Component {
@@ -16,7 +16,7 @@ export default class LocationList extends Component {
 			return null;
 		}
 
-		return(
+		return (
 			<div className='list-group col-xs-12 col-md-6 col-md-offset-3'>
 				<span className='list-group-item active'>Saved locations</span>
 				{locations}
