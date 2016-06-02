@@ -1,7 +1,3 @@
-//Description: App is the main component. 
-//It contains methods for the actions that can be performed by the user.
-//The other components are nested inside it.
-
 // import libraries
 import {Component} from 'react';
 
@@ -11,19 +7,14 @@ import Map from './Map';
 import CurrentLocation from './CurrentLocation';
 import LocationList from './LocationList';
 
-//Start creating App Component
 export default class App extends Component {
-	//component will mount
 	constructor(props) {
 		super(props);
-		// Extract the favorite locations from local stora
 		let favorites = [];
 		if(localStorage.favorites){
 			favorites = JSON.parse(localStorage.favorites);
 		}
-		//get initial state
 		this.state = {
-			//set default city Kiev
 				favorites: favorites,
 				currentAddress:'Paris, France',
 				mapCoordinates: {
@@ -54,7 +45,6 @@ export default class App extends Component {
 				break;
 			}
 		}
-		// If it was found, remove it from the favorites array
 		if (index !== -1) {
 			favorites.splice(index, 1);
 			this.setState({
@@ -84,7 +74,6 @@ export default class App extends Component {
 
 	searchForAddress = (address) => {
 		let self = this;
-		// We will use GMaps' geocode functionality, which is built on top of the Google Maps API
 		GMaps.geocode({
 			address: address,
 			callback: (result, status) => {
