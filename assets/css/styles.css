@@ -114,13 +114,22 @@ a.list-group-item span.createdAt {
 	z-index: -1;
 }
 
-
-.technology .glyphicon {
-	font-size: 28px;
+.github__img {
+	margin-top: 50px;
+	display: block;
+	text-align: center;
 }
-.technology img,
-.technology span {
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+
+.github__img > img {
+	height: 24px;
+	max-width: 100px;
+}
+
+.github__img > img path {
+	fill: #dce4ec;
+}
+
+.github__img > img:hover path,
+.github__img > img:focus path {
+	fill: #2c3e50;
 }
