@@ -91,7 +91,7 @@ module.exports = {
 			NODE_ENV: JSON.stringify(NODE_ENV)
 		}),
 		new ExtractTextPlugin(
-			'../css/style.css',
+			'css/style.css',
 			{
 				allChunks: true,
 				disable: NODE_ENV == 'development'
