@@ -114,22 +114,11 @@ a.list-group-item span.createdAt {
 	z-index: -1;
 }
 
-.github__img {
-	margin-top: 50px;
-	display: block;
-	text-align: center;
-}
-
-.github__img > img {
-	height: 24px;
+.to-github {
+	margin: 50px auto 30px auto;
+	height: 18px;
 	max-width: 100px;
-}
-
-.github__img > img path {
-	fill: #dce4ec;
-}
-
-.github__img > img:hover path,
-.github__img > img:focus path {
-	fill: #2c3e50;
+	display: block;
+	background: transparent url('../img/github.svg') no-repeat center center;
+	background-size: contain;
 }

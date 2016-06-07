@@ -1,4 +1,5 @@
 import React from 'react';
+import GMaps from 'gmaps';
 
 export default class Map extends React.Component {
 	componentDidMount() {
