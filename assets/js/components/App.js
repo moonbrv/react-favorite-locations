@@ -1,5 +1,6 @@
 // import libraries
-import React, {Component} from 'react';
+import React from 'react';
+import GMaps from 'gmaps';
 
 //import components
 import Search from './Search';
@@ -7,7 +8,7 @@ import Map from './Map';
 import CurrentLocation from './CurrentLocation';
 import LocationList from './LocationList';
 
-export default class App extends Component {
+export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		let favorites = [];
@@ -16,10 +17,10 @@ export default class App extends Component {
 		}
 		this.state = {
 				favorites: favorites,
-				currentAddress:'Paris, France',
+				currentAddress:'Киев, Украина, 02000',
 				mapCoordinates: {
-					lat: 48.856614,
-					lng: 2.3522219
+					lat: 50.4501,
+					lng: 30.523400000000038
 				}
 		}
 	}
@@ -95,7 +96,7 @@ export default class App extends Component {
 	render() {
 		return (
 			<div>
-				<h1>Your Google Maps Locations</h1>
+				<h1>Enter the name of your favourite location</h1>
 				<Search onSearch={this.searchForAddress} />
 				<Map lat={this.state.mapCoordinates.lat} lng={this.state.mapCoordinates.lng} />
 

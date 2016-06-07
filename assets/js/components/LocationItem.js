@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import moment from 'moment';
 
-export default class LocationItem extends Component {
+export default class LocationItem extends React.Component {
 	handleClick = () => {
 		this.props.onClick(this.props.address);
 	}

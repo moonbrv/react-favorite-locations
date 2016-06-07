@@ -16,15 +16,12 @@ module.exports = {
 	},
 
 	entry:  ['babel-polyfill' , __dirname + '/assets/js/index.js'],
-		/*{
-			polyfill: 'babel-polyfill',
-			main: __dirname + '/assets/js/index.js'
-		},*/
 	
 	output: {
-		path: __dirname + '/public/js',
+		path: __dirname + '/public',
 		publicPath: '/',
-		filename: 'bundle.js',
+		filename: '[name].bundle.js',
+		chunkFilename: '[id].bundle.js'
 	},
 
 	devtool: NODE_ENV == 'development' ? 'cheap-module-source-map': null,
@@ -60,6 +57,10 @@ module.exports = {
 					cacheDirectory: true
 				}
 			},
+			{
+				test: /\.(jpg|png|svg)$/,
+				loader: 'file?name=[path][name]-[hash:5].[ext]&regExp=assets/(.*)'
+			}
 		]
 	},
 
@@ -78,7 +79,9 @@ module.exports = {
 			compress: {
 				warnings: false
 			},
-			comments: false
+			output: {
+				comments: false
+			}
 		}),
 		new HtmlWebpackPlugin({
 			template: __dirname + '/assets/index.tmpl.html',
@@ -92,6 +95,7 @@ module.exports = {
 			{
 				allChunks: true,
 				disable: NODE_ENV == 'development'
-			})
+			}
+		)
 	]
 }

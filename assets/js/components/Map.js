@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import GMaps from 'gmaps';
 
-export default class Map extends Component {
+export default class Map extends React.Component {
 	componentDidMount() {
 		this.componentDidUpdate();
 	}
