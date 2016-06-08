@@ -10,7 +10,7 @@ In this project I did use:
 - Babel
 - Some of ES6 features
 
-For use it:
+For building this project you need:
 
 1. Download or Clone repository
 2. Enter in folder in terminal
