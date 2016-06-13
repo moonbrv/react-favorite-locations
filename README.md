@@ -4,7 +4,7 @@ Example of React app with GMaps
 
 [Try it now](http://moonbrv.github.io/react-favourite-locations/)
 
-In this project I did use:
+In this project I used:
 - Webpack
 - React
 - Babel
