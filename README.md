@@ -2,7 +2,7 @@
 
 Example of React app with GMaps
 
-[Try it now](http://moonbrv.github.io/react-favourite-locations/)
+####[Try it now](http://moonbrv.github.io/react-favourite-locations/)
 
 In this project I used:
 - Webpack
