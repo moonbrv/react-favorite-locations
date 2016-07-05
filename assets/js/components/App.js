@@ -9,8 +9,8 @@ import CurrentLocation from './CurrentLocation';
 import LocationList from './LocationList';
 
 export default class App extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		let favorites = [];
 		if(localStorage.favorites){
 			favorites = JSON.parse(localStorage.favorites);
