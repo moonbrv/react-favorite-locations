@@ -4,10 +4,10 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const cssnano = require('cssnano');
-const rimraf = require('rimraf');
 const autoprefixer = require('autoprefixer');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
+const NODE_ENV = process.env.NODE_ENV || 'production';
 
 console.log('*********************************')
 console.log('----- ' + 'NODE_ENV = ' + NODE_ENV + ' -----');
@@ -26,18 +26,12 @@ module.exports = {
 	
 	output: {
 		path: __dirname + '/public',
-		publicPath: '/',
+		publicPath: '',
 		filename: '[name].bundle.js',
 		chunkFilename: '[id].bundle.js'
 	},
 
-	devtool: NODE_ENV == 'development' ? 'cheap-module-source-map': null,
-
-	devServer: {
-		contentBase: __dirname + '/public',
-		colors: true,
-		historyApiFallback: true
-	},
+	devtool: null,
 
 	module: {
 		preLoaders: [
@@ -47,7 +41,6 @@ module.exports = {
 			loader: 'eslint'
 		}
 		],
-
 		loaders: [
 		{
 			test: /\.json$/,
@@ -55,7 +48,7 @@ module.exports = {
 		},
 		{
 			test: /\.css$/,
-			loader: 'style!css!postcss'
+			loader: ExtractTextPlugin.extract('style', 'css!postcss')
 		},
 		{
 			test: /\.js$/,
@@ -70,6 +63,7 @@ module.exports = {
 			include:/node_modules\/bootstrap\/dist/,
 			loader: 'file?name=[1]&regExp=node_modules/bootstrap/dist/(.*)'
 		},
+		
 		{ //copy images from assets to public with its original paths and name
 			test: /\.(jpg|png|svg)$/,
 			include: /assets/,
@@ -89,24 +83,21 @@ module.exports = {
 
 	plugins: [
 	new webpack.optimize.OccurenceOrderPlugin(),
-	
-	{
-	/**
-	*sync delete public folder, because when you use clean-webpack-plugin 
-	*and want to combo "webpack && webpack-dev-server --hot --inline"
-	*plugin will launch two times, when webpack start building process, 
-	*and second time right before launch dev-server, server have no folder to serve from
-	*so i use rifraf :P
-	*/
-		apply: (compiler) => {
-			rimraf.sync(compiler.options.output.path)
-		}
-	},
+
 	new webpack.optimize.CommonsChunkPlugin({
 		name: 'vendor',
 		filename: 'vendor.bundle.js',
 		minChunks: Infinity
 	}),
+	/*new webpack.optimize.UglifyJsPlugin({
+		compress: {
+			warnings: false
+		},
+		output: {
+			comments: false
+		}
+	}),*/
+	new CleanWebpackPlugin(['public']),
 	new HtmlWebpackPlugin({
 		template: __dirname + '/assets/index.tmpl.html',
 		filename: __dirname + '/public/index.html'
@@ -114,5 +105,11 @@ module.exports = {
 	new webpack.DefinePlugin({
 		NODE_ENV: JSON.stringify(NODE_ENV)
 	}),
+	new ExtractTextPlugin(
+		'style.css',
+		{
+			allChunks: true,
+		}
+		)
 	]
 }

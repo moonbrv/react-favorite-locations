@@ -3,12 +3,11 @@ import LocationItem from './LocationItem';
 
 export default class LocationList extends React.Component {
 	render() {
-		let self = this;
 		let locations = this.props.locations.map( (l) => {
-			let active = self.props.activeLocationAddress == l.address;
+			let active = this.props.activeLocationAddress == l.address;
 			return (
 				<LocationItem key={'' + l.address + l.timestamp} address={l.address} 
-			timestamp={l.timestamp} active={active} onClick={self.props.onClick} />
+			timestamp={l.timestamp} active={active} onClick={this.props.onClick} />
 			)
 		});
 

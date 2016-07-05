@@ -9,8 +9,8 @@ import CurrentLocation from './CurrentLocation';
 import LocationList from './LocationList';
 
 export default class App extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		let favorites = [];
 		if(localStorage.favorites){
 			favorites = JSON.parse(localStorage.favorites);
@@ -74,7 +74,6 @@ export default class App extends React.Component {
 	}
 
 	searchForAddress = (address) => {
-		let self = this;
 		GMaps.geocode({
 			address: address,
 			callback: (result, status) => {
@@ -82,7 +81,7 @@ export default class App extends React.Component {
 					return;
 				}
 				let latlng = result[0].geometry.location;
-				self.setState({
+				this.setState({
 					currentAddress: result[0].formatted_address,
 					mapCoordinates: {
 						lat: latlng.lat(),
