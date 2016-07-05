@@ -89,14 +89,14 @@ module.exports = {
 		filename: 'vendor.bundle.js',
 		minChunks: Infinity
 	}),
-	/*new webpack.optimize.UglifyJsPlugin({
+	new webpack.optimize.UglifyJsPlugin({
 		compress: {
 			warnings: false
 		},
 		output: {
 			comments: false
 		}
-	}),*/
+	}),
 	new CleanWebpackPlugin(['public']),
 	new HtmlWebpackPlugin({
 		template: __dirname + '/assets/index.tmpl.html',
