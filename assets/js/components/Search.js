@@ -20,8 +20,7 @@ export default class Search extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		this.props.onSearch(this.state.value);
-		// this.refs.userInput.blur();
-		e.target.blur();
+		document.getElementById('address').blur();
 		this.setState({
 			value: '',
 		});
