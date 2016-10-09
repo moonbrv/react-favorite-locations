@@ -92,23 +92,23 @@ h1 {
 	padding: 10px 20px;
 }
 
-a.list-group-item {
+.list-group-item {
 	cursor: pointer;
 }
 
-a.list-group-item:hover {
+.list-group-item:hover {
 	background-color: #F7FBFF;
 }
 
-a.active-location {
+.active-location {
 	background-color: #EEF6FF;
 }
 
-a.active-location:hover {
+.active-location:hover {
 	background-color: #EBF3FC;
 }
 
-a.list-group-item span.createdAt {
+.list-group-item span.createdAt {
 	display: block;
 	color: #969FA8;
 	z-index: -1;
