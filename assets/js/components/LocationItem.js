@@ -1,5 +1,4 @@
 import React from 'react';
-// import moment from 'moment';
 import fromTime from './../utils/fromTime';
 
 export default class LocationItem extends React.Component {
