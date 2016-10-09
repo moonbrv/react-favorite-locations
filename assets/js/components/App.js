@@ -23,6 +23,12 @@ export default class App extends React.Component {
 				lng: 30.523400000000038,
 			},
 		};
+
+		this.addToFavorites = this.addToFavorites.bind(this);
+		this.removeFromFavorites = this.removeFromFavorites.bind(this);
+		this.toggleFavorite = this.toggleFavorite.bind(this);
+		this.isAddressInFavorites = this.isAddressInFavorites.bind(this);
+		this.searchForAddress = this.searchForAddress.bind(this);
 	}
 
 	addToFavorites(address) {

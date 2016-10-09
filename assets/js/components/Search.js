@@ -6,17 +6,25 @@ export default class Search extends React.Component {
 		this.state = {
 			value: '',
 		};
+
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+
 	handleChange(e) {
 		this.setState({
 			value: e.target.value,
 		});
 	}
+
 	handleSubmit(e) {
 		e.preventDefault();
 		this.props.onSearch(this.state.value);
 		// this.refs.userInput.blur();
-		document.getElementById('address').blur();
+		e.target.blur();
+		this.setState({
+			value: '',
+		});
 	}
 
 	render() {
@@ -29,7 +37,8 @@ export default class Search extends React.Component {
 								type="text"
 								className="form-control"
 								id="address"
-								placeholder="Find a location..." value={this.state.value}
+								placeholder="Find a location..."
+								value={this.state.value}
 								onChange={this.handleChange}
 							/>
 							<span className="input-group-btn">

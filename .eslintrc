@@ -1,14 +1,5 @@
 {
 	"extends": "airbnb",
-	
-	/*"parser": "babel-eslint",
-	"env": {
-		"browser": true,
-		"node": true
-	},
-	"plugins": [
-		"react"
-	],*/
 	"globals": {
 		"document": true,
 		"localStorage": true

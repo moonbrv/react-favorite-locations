@@ -1,9 +1,16 @@
 import React from 'react';
 
 export default class CurrentLocation extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.toggleFavorite = this.toggleFavorite.bind(this);
+	}
+
 	toggleFavorite() {
 		this.props.onFavoriteToggle(this.props.address);
 	}
+
 	render() {
 		let starClassName = 'glyphicon glyphicon-star-empty';
 

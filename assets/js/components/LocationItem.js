@@ -3,9 +3,16 @@ import React from 'react';
 import fromTime from './../utils/fromTime';
 
 export default class LocationItem extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.handleClick = this.handleClick.bind(this);
+	}
+
 	handleClick() {
 		this.props.onClick(this.props.address);
 	}
+
 	render() {
 		let link = 'list-group-item';
 		if (this.props.active) {
