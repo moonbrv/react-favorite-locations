@@ -7,15 +7,15 @@ export default class LocationItem extends React.Component {
 	}
 
 	render () {
-		let link = 'list-group-item';
+		let link = "list-group-item";
 		if (this.props.active) {
-			link += ' active-location';
+			link += " active-location";
 		}
 		return (
 			<a className={link} onClick={this.handleClick}>
 				{this.props.address}
-				<span className='createdAt'>{moment(this.props.timestamp).fromNow()}</span>
-				<span className='glyphicon glyphicon-menu-right'></span>
+				<span className="createdAt">{moment(this.props.timestamp).fromNow()}</span>
+				<span className="glyphicon glyphicon-menu-right"></span>
 			</a>
 		)
 	}

@@ -20,15 +20,15 @@ export default class Search extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit} id='geocoding_form' className='form-horizontal'>
-				<div className='form-group'>
-					<div className='col-xs-12 col-md-6 col-md-offset-3'>
-						<div className='input-group'>
-							<input type='text' className='form-control' id='address' 
-							placeholder='Find a location...' value={this.state.value}
-							onChange={this.handleChange} ref='userInput' />
-							<span className='input-group-btn'>
-								<span className='glyphicon glyphicon-search' aria-hidden='true'></span>
+			<form onSubmit={this.handleSubmit} id="geocoding_form" className="form-horizontal">
+				<div className="form-group">
+					<div className="col-xs-12 col-md-6 col-md-offset-3">
+						<div className="input-group">
+							<input type="text" className="form-control" id="address" 
+							placeholder="Find a location..." value={this.state.value}
+							onChange={this.handleChange} ref="userInput" />
+							<span className="input-group-btn">
+								<span className="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</span>
 						</div>
 					</div>

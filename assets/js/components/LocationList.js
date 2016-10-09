@@ -16,8 +16,8 @@ export default class LocationList extends React.Component {
 		}
 
 		return (
-			<div className='list-group col-xs-12 col-md-6 col-md-offset-3'>
-				<span className='list-group-item active'>Saved locations</span>
+			<div className="list-group col-xs-12 col-md-6 col-md-offset-3">
+				<span className="list-group-item active">Saved locations</span>
 				{locations}
 			</div>
 		)
