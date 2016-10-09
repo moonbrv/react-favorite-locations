@@ -24,7 +24,7 @@ module.exports = {
 	},
 	
 	output: {
-		path: __dirname + '/public',
+		path: __dirname + '/devbuild',
 		publicPath: '/',
 		filename: '[name].bundle.js',
 		chunkFilename: '[id].bundle.js'
@@ -33,7 +33,7 @@ module.exports = {
 	devtool: NODE_ENV == 'development' ? 'cheap-module-source-map': null,
 
 	devServer: {
-		contentBase: __dirname + '/public',
+		contentBase: __dirname + '/devbuild',
 		colors: true,
 		historyApiFallback: true
 	},
@@ -108,7 +108,7 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: __dirname + '/assets/index.tmpl.html',
-			filename: __dirname + '/public/index.html'
+			filename: __dirname + '/devbuild/index.html'
 		}),
 		new webpack.DefinePlugin({
 			NODE_ENV: JSON.stringify(NODE_ENV)

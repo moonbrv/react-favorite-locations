@@ -25,7 +25,7 @@ module.exports = {
 	},
 	
 	output: {
-		path: __dirname + '/public',
+		path: __dirname + '/dist',
 		publicPath: '',
 		filename: '[name].bundle-[hash:6].js',
 		chunkFilename: '[id].bundle-[hash:6].js'
@@ -86,7 +86,7 @@ module.exports = {
 
 		new webpack.optimize.OccurenceOrderPlugin(),
 
-		new CleanWebpackPlugin(['public']),
+		new CleanWebpackPlugin(['dist']),
 
 		new webpack.optimize.CommonsChunkPlugin({
 			children: true,
@@ -111,7 +111,7 @@ module.exports = {
 		
 		new HtmlWebpackPlugin({
 			template: __dirname + '/assets/index.tmpl.html',
-			filename: __dirname + '/public/index.html'
+			filename: __dirname + '/dist/index.html'
 		}),
 		new webpack.DefinePlugin({
 			NODE_ENV: JSON.stringify(NODE_ENV)
