@@ -1,20 +1,26 @@
 import React from 'react';
 
 export default class CurrentLocation extends React.Component {
-	toggleFavorite = () => {
+	toggleFavorite() {
 		this.props.onFavoriteToggle(this.props.address);
 	}
-	render () {
-		let starClassName = "glyphicon glyphicon-star-empty";
+	render() {
+		let starClassName = 'glyphicon glyphicon-star-empty';
 
-		if(this.props.favorite) {
-			starClassName = "glyphicon glyphicon-star";
+		if (this.props.favorite) {
+			starClassName = 'glyphicon glyphicon-star';
 		}
 		return (
 			<div className="col-xs-12 col-md-6 col-md-offset-3 current-location">
 				<h4 id="save-location">{this.props.address}</h4>
-				<span className={starClassName} onClick={this.toggleFavorite} aria-hidden="true"></span>
+				<span className={starClassName} onClick={this.toggleFavorite} aria-hidden="true" />
 			</div>
-		)
+		);
 	}
 }
+
+CurrentLocation.propTypes = {
+	address: React.PropTypes.string,
+	onFavoriteToggle: React.PropTypes.func,
+	favorite: React.PropTypes.bool,
+};

@@ -21,7 +21,7 @@ module.exports = {
 	entry: 
 	{
 		main: __dirname + '/assets/js/index',
-		vendor: ['react', 'react-dom', 'gmaps', 'moment']
+		vendor: ['react', 'react-dom', 'gmaps']
 	},
 	
 	output: {
@@ -111,5 +111,10 @@ module.exports = {
 			allChunks: true,
 		}
 		)
-	]
+	],
+	node: {
+		fs: 'empty',
+		net: 'empty',
+		tls: 'empty'
+	}
 }
