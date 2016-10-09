@@ -1,6 +1,6 @@
 {
   "name": "React-favourite-locations-app",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "main": "webpack.config.js",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -36,7 +36,6 @@
     "babel-runtime": "^6.9.2",
     "bootstrap": "^3.3.6",
     "gmaps": "^0.4.24",
-    "moment": "^2.13.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
   },
@@ -45,7 +44,11 @@
     "start": "webpack && webpack-dev-server --hot --inline",
     "build": "NODE_ENV=production webpack --config ./webpack.production.config.js"
   },
-  "author": "Dmitry Palamarchuk",
+  "author": "Dmitry Palamarchuk <moonbrv@gmail.com> (https://github.com/moonbrv)",
+  "homepage": "https://github.com/moonbrv/react-favourite-locations",
+  "keywords": [
+    "react",
+  ],
   "license": "MIT",
   "description": "React app example. I did use ES6, Webpack and Babel"
 }
