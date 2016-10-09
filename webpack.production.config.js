@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const cssnano = require('cssnano');
 const autoprefixer = require('autoprefixer');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const purify = require('purifycss-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'production';
 
@@ -15,20 +16,19 @@ console.log('*********************************')
 
 module.exports = {
 	resolve: {
-		extensions: ['', '.js', '.css', '.json']
+		extensions: ['', '.html', '.js', '.css', '.json']
 	},
 
 	entry: 
 	{
-		main: __dirname + '/assets/js/index',
-		vendor: ['react', 'react-dom', 'gmaps']
+		main: __dirname + '/assets/js/index'
 	},
 	
 	output: {
 		path: __dirname + '/public',
 		publicPath: '',
-		filename: '[name].bundle.js',
-		chunkFilename: '[id].bundle.js'
+		filename: '[name].bundle-[hash:6].js',
+		chunkFilename: '[id].bundle-[hash:6].js'
 	},
 
 	devtool: null,
@@ -82,35 +82,55 @@ module.exports = {
 	],
 
 	plugins: [
-	new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.NoErrorsPlugin(),
 
-	new webpack.optimize.CommonsChunkPlugin({
-		name: 'vendor',
-		filename: 'vendor.bundle.js',
-		minChunks: Infinity
-	}),
-	new webpack.optimize.UglifyJsPlugin({
-		compress: {
-			warnings: false
-		},
-		output: {
-			comments: false
-		}
-	}),
-	new CleanWebpackPlugin(['public']),
-	new HtmlWebpackPlugin({
-		template: __dirname + '/assets/index.tmpl.html',
-		filename: __dirname + '/public/index.html'
-	}),
-	new webpack.DefinePlugin({
-		NODE_ENV: JSON.stringify(NODE_ENV)
-	}),
-	new ExtractTextPlugin(
-		'style.css',
-		{
-			allChunks: true,
-		}
-		)
+		new webpack.optimize.OccurenceOrderPlugin(),
+
+		new CleanWebpackPlugin(['public']),
+
+		new webpack.optimize.CommonsChunkPlugin({
+			children: true,
+			async: true,
+		}),
+
+		new webpack.optimize.DedupePlugin(),
+
+		new webpack.optimize.UglifyJsPlugin({
+			beautify: false,
+			comments: false,
+			compress: {
+				sequences: true,
+				booleans: true,
+				loops: true,
+				unused: true,
+				warnings: false,
+				drop_console: true,
+				unsafe: true
+			}
+		}),
+		
+		new HtmlWebpackPlugin({
+			template: __dirname + '/assets/index.tmpl.html',
+			filename: __dirname + '/public/index.html'
+		}),
+		new webpack.DefinePlugin({
+			NODE_ENV: JSON.stringify(NODE_ENV)
+		}),
+		new ExtractTextPlugin(
+			'style-[hash:6].css'
+		),
+		new purify({
+			basePath: __dirname,
+			paths: [
+				"./assets/*.html",
+				"./assets/js/**/*.js"
+			],
+			resolveExtensions: [ '.html', '.js'],
+			purifyOptions: {
+				minify: true,
+				info: true
+			}
+		})
 	],
 	node: {
 		fs: 'empty',

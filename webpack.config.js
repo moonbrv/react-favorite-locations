@@ -20,8 +20,7 @@ module.exports = {
 
 	entry: 
 	{
-		main: __dirname + '/assets/js/index',
-		vendor: ['react', 'react-dom', 'gmaps']
+		main: __dirname + '/assets/js/index'
 	},
 	
 	output: {
@@ -88,32 +87,32 @@ module.exports = {
 	],
 
 	plugins: [
-	new webpack.optimize.OccurenceOrderPlugin(),
-	
-	{
-	/**
-	*sync delete public folder, because when you use clean-webpack-plugin 
-	*and want to combo "webpack && webpack-dev-server --hot --inline"
-	*plugin will launch two times, when webpack start building process, 
-	*and second time right before launch dev-server, server have no folder to serve from
-	*so i use rifraf :P
-	*/
-		apply: (compiler) => {
-			rimraf.sync(compiler.options.output.path)
-		}
-	},
-	new webpack.optimize.CommonsChunkPlugin({
-		name: 'vendor',
-		filename: 'vendor.bundle.js',
-		minChunks: Infinity
-	}),
-	new HtmlWebpackPlugin({
-		template: __dirname + '/assets/index.tmpl.html',
-		filename: __dirname + '/public/index.html'
-	}),
-	new webpack.DefinePlugin({
-		NODE_ENV: JSON.stringify(NODE_ENV)
-	}),
+		new webpack.NoErrorsPlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		
+		{
+		/**
+		*sync delete public folder, because when you use clean-webpack-plugin 
+		*and want to combo "webpack && webpack-dev-server --hot --inline"
+		*plugin will launch two times, when webpack start building process, 
+		*and second time right before launch dev-server, server have no folder to serve from
+		*so i use rifraf :P
+		*/
+			apply: (compiler) => {
+				rimraf.sync(compiler.options.output.path)
+			}
+		},
+		new webpack.optimize.CommonsChunkPlugin({
+			children: true,
+			async: true
+		}),
+		new HtmlWebpackPlugin({
+			template: __dirname + '/assets/index.tmpl.html',
+			filename: __dirname + '/public/index.html'
+		}),
+		new webpack.DefinePlugin({
+			NODE_ENV: JSON.stringify(NODE_ENV)
+		}),
 	],
 	node: {
 		fs: 'empty',

@@ -26,6 +26,7 @@
     "html-webpack-plugin": "^2.16.2",
     "json-loader": "^0.5.4",
     "postcss-loader": "^0.9.1",
+    "purifycss-webpack-plugin": "^2.0.3",
     "resolve-url-loader": "^1.5.0",
     "rimraf": "^2.5.3",
     "style-loader": "^0.13.1",
@@ -47,7 +48,7 @@
   "author": "Dmitry Palamarchuk <moonbrv@gmail.com> (https://github.com/moonbrv)",
   "homepage": "https://github.com/moonbrv/react-favourite-locations",
   "keywords": [
-    "react",
+    "react"
   ],
   "license": "MIT",
   "description": "React app example. I did use ES6, Webpack and Babel"
