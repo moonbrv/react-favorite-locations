@@ -1,6 +1,6 @@
 // import libraries
 import React from 'react';
-import GMaps from 'gmaps';
+import gmaps from 'gmaps';
 
 // import components
 import Search from './Search';
@@ -80,7 +80,7 @@ export default class App extends React.Component {
 	}
 
 	searchForAddress(address) {
-		GMaps.geocode({
+		gmaps.geocode({
 			address,
 			callback: (result, status) => {
 				if (status !== 'OK') {

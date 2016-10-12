@@ -31,5 +31,5 @@ LocationItem.propTypes = {
 	onClick: React.PropTypes.func,
 	active: React.PropTypes.bool,
 	address: React.PropTypes.string,
-	timestamp: React.PropTypes.string,
+	timestamp: React.PropTypes.number,
 };

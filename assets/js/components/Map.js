@@ -1,5 +1,5 @@
 import React from 'react';
-import GMaps from 'gmaps';
+import gmaps from 'gmaps';
 
 export default class Map extends React.Component {
 	componentDidMount() {
@@ -12,12 +12,8 @@ export default class Map extends React.Component {
 		this.lastLat = this.props.lat;
 		this.lastLng = this.props.lng;
 
-		const map = new GMaps({
+		gmaps({
 			el: '#map',
-			lat: this.props.lat,
-			lng: this.props.lng,
-		});
-		map.addMarker({
 			lat: this.props.lat,
 			lng: this.props.lng,
 		});
