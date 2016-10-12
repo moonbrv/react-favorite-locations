@@ -30,7 +30,7 @@ module.exports = {
 		chunkFilename: '[id].bundle.js'
 	},
 
-	devtool: NODE_ENV == 'development' ? 'cheap-module-source-map': null,
+	devtool:'cheap-module-source-map',
 
 	devServer: {
 		contentBase: __dirname + '/devbuild',
@@ -86,22 +86,16 @@ module.exports = {
 	cssnano()
 	],
 
+	externals: {
+		'cheerio': 'window',
+		'react/lib/ExecutionEnvironment': true,
+		'react/lib/ReactContext': true,
+	},
+
 	plugins: [
 		new webpack.NoErrorsPlugin(),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		
-		{
-		/**
-		*sync delete public folder, because when you use clean-webpack-plugin 
-		*and want to combo "webpack && webpack-dev-server --hot --inline"
-		*plugin will launch two times, when webpack start building process, 
-		*and second time right before launch dev-server, server have no folder to serve from
-		*so i use rifraf :P
-		*/
-			apply: (compiler) => {
-				rimraf.sync(compiler.options.output.path)
-			}
-		},
 		new webpack.optimize.CommonsChunkPlugin({
 			children: true,
 			async: true
