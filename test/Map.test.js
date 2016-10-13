@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {mount} from 'enzyme';
 import {expect} from 'chai';
 
 // import components
@@ -15,7 +15,22 @@ describe('Testing component: Map', () => {
 	};
 
 	beforeEach(() => {
-		wrapper = mount(<Map/>);
+		wrapper = mount(<Map
+			lat={coord.lat}
+			lng={coord.lng}
+		/>);
+	});
+
+	it('Must be rendered', () => {
+		expect(wrapper.find('#map')).to.have.length(1);
+	});
+	
+	it('Must have a lat type of number', () => {
+		expect(wrapper.props().lat).to.be.number;
+	});
+
+	it('Must have a lng type of number', () => {
+		expect(wrapper.props().lng).to.be.number;
 	});
 
 });
