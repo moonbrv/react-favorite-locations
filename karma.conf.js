@@ -14,8 +14,8 @@ module.exports = function(config) {
 	// list of files / patterns to load in the browser
 	files: [
 		'./assets/js/**/*.js',
-		'./test/**/*.test.js'
-		//'http://maps.googleapis.com/maps/api/js?sensor=false&language=en'
+		'./test/**/*.test.js',
+		'http://maps.googleapis.com/maps/api/js?sensor=false&language=en'
 	],
 
 	// list of files to exclude
@@ -26,15 +26,29 @@ module.exports = function(config) {
 	// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 	preprocessors: {
 		'./test/**/*.test.js': ['webpack', 'sourcemap'],
-		'assets/js/**/*.js': ['coverage']
+		'assets/js/**/*.js': ['webpack', 'coverage']
 	},
 
 	webpack: {
-	// karma watches the test entry points
-	// (you don't need to specify the entry option)
-	// webpack watches dependencies
-
-	// webpack configuration
+		// devtool: 'inline-source-map', //just do inline source maps instead of the default
+		// module: {
+		// 	loaders: [
+		// 		{
+		// 			test: /\.js$/,
+		// 			exclude: /\/node_modules\//,
+		// 			loader: 'babel',
+		// 			query: {
+		// 				presets: ['es2015', 'react']
+		// 			}
+		// 		}
+		// 	]
+		// },
+		// externals: {
+		// 	'cheerio': 'window',
+		// 	'react/addons': true,
+		// 	'react/lib/ExecutionEnvironment': true,
+		// 	'react/lib/ReactContext': true
+		// }
 	},
 
 	webpackMiddleware: {
@@ -49,7 +63,8 @@ module.exports = function(config) {
 		'karma-chai',
 		'karma-webpack',
 		'karma-phantomjs-launcher',
-		'karma-sourcemap-loader'
+		'karma-sourcemap-loader',
+		'karma-coverage'
 	],
 
 	// test results reporter to use
