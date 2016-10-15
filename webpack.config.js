@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const cssnano = require('cssnano');
 const rimraf = require('rimraf');
 const autoprefixer = require('autoprefixer');
+const path = require('path');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -15,14 +16,17 @@ console.log('*********************************')
 
 module.exports = {
 	resolve: {
-		extensions: ['', '.js', '.css', '.json']
+		extensions: ['', '.js', '.css', '.json'],
+		alias: {
+			'sinon': 'sinon/pkg/sinon'
+		}
 	},
 
-	entry: 
+	entry:
 	{
 		main: __dirname + '/assets/js/index'
 	},
-	
+
 	output: {
 		path: __dirname + '/devbuild',
 		publicPath: '/',
@@ -42,10 +46,14 @@ module.exports = {
 		preLoaders: [
 		{
 			test: /\.js$/,
-			exclude: /node_modules/,
+			exclude: path.resolve(__dirname, 'node_modules'),
 			loader: 'eslint'
 		}
 		],
+
+		noParse: [
+			/node_modules\/sinon\//,
+		]
 
 		loaders: [
 		{
@@ -58,7 +66,7 @@ module.exports = {
 		},
 		{
 			test: /\.js$/,
-			exclude: /node_modules/,
+			exclude: path.resolve(__dirname, 'node_modules'),
 			loader: 'babel',
 			query: {
 				cacheDirectory: true
@@ -87,15 +95,17 @@ module.exports = {
 	],
 
 	externals: {
-		'cheerio': 'window',
+		// 'jsdom': 'window',
+		// 'cheerio': 'window',
+		'react/addons': true,
 		'react/lib/ExecutionEnvironment': true,
-		'react/lib/ReactContext': true,
+		'react/lib/ReactContext': true
 	},
 
 	plugins: [
 		new webpack.NoErrorsPlugin(),
 		new webpack.optimize.OccurenceOrderPlugin(),
-		
+
 		new webpack.optimize.CommonsChunkPlugin({
 			children: true,
 			async: true
