@@ -1,5 +1,12 @@
 require('babel-register')();
 
+console.log('====== START TEST ==========')
+
+const fs = require('fs');
+const path = require('path');
+
+const API_INLINE = fs.readFileSync(path.join(__dirname,'api_mock.js'), "utf-8");
+
 // creating local storage
 if (typeof localStorage === "undefined" || localStorage === null) {
   const LocalStorage = require('node-localstorage').LocalStorage;
@@ -11,12 +18,9 @@ const jsdom = require('jsdom').jsdom;
 
 let exposedProperties = ['window', 'navigator', 'document', 'localStorage'];
 
-require("jsdom").defaultDocumentFeatures = {
-	FetchExternalResources: ["script"],
-	ProcessExternalResources: false
-};
+global.document = jsdom('<html><head></head><body><script src="https://maps.googleapis.com/maps/api/js"></script></body></html>');
 
-global.document = jsdom('<html><head><script src="https://maps.googleapis.com/maps/api/js"></script></head><body></body></html>');
+//global.document = jsdom('<html><head></head><body><div id="root" class="container"></div><script>' + API_INLINE + '</script></body></html>');
 
 global.window = document.defaultView;
 
