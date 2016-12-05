@@ -48,8 +48,8 @@
     "react-dom": "^15.0.2"
   },
   "scripts": {
-    "test": "NODE_ENV=production mocha ./test/helpers/browser.js ./test/**/*.test.js --compilers js:babel-register",
-    "test:watch": "NODE_ENV=production mocha ./test/helpers/browser.js ./test/**/*.test.js --compilers js:babel-register --watch",
+    "test": "NODE_ENV=test mocha ./test/helpers/browser.js ./test/**/*.test.js --compilers js:babel-register",
+    "test:watch": "NODE_ENV=test mocha ./test/helpers/browser.js ./test/**/*.test.js --compilers js:babel-register --watch",
     "start": "webpack && webpack-dev-server --hot --inline",
     "build": "NODE_ENV=production webpack --config ./webpack.production.config.js",
     "gh-pages": "git subtree push --prefix dist origin gh-pages"

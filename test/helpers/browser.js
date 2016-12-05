@@ -1,8 +1,10 @@
 require('babel-register')();
 
 // creating local storage
-const LocalStorage = require('node-localstorage').LocalStorage;
-global.localStorage = new LocalStorage('./devbuild/scratch');
+if (typeof localStorage === "undefined" || localStorage === null) {
+  const LocalStorage = require('node-localstorage').LocalStorage;
+  global.localStorage = new LocalStorage('./scratch');
+}
 
 // creating global objects: document, window etc.
 const jsdom = require('jsdom').jsdom;
