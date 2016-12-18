@@ -1,3 +1,8 @@
+## 0.1.4 (December 18, 2016)
+- Put button to the current location compoent, instead glyphicon to add and remove location from the list
+- Fix bug with bad view on small screen add viewport info to index.tmpl.html
+- Change stylesheet to better display on small screen
+
 ## 0.1.3 (October 9, 2016)
 - Edit eslint config. As a base i take Airbnb config, but change it a bit. All changes you may see in [.eslintrc](https://github.com/moonbrv/react-favourite-locations/blob/master/.eslintrc) file
 - Change moment library to custrom function, because i need only one fuction from library but can take it with destruction assigment
