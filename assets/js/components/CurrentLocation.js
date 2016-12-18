@@ -12,15 +12,31 @@ export default class CurrentLocation extends React.Component {
 	}
 
 	render() {
-		let starClassName = 'glyphicon glyphicon-star-empty';
-
+		const addButton = {
+			text: 'Add to favourites',
+			class: 'btn btn-success',
+		};
 		if (this.props.favorite) {
-			starClassName = 'glyphicon glyphicon-star';
+			addButton.text = 'Remove from favourites';
+			addButton.class = 'btn btn-danger';
 		}
 		return (
-			<div className="col-xs-12 col-md-6 col-md-offset-3 current-location">
-				<h4 id="save-location">{this.props.address}</h4>
-				<span className={starClassName} onClick={this.toggleFavorite} aria-hidden="true" />
+			<div className="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 current-location">
+				<div className="row">
+					<div className="col-xs-12 col-sm-7 col-md-7 text-center">
+						<h4>{this.props.address}</h4>
+					</div>
+					<div className="col-xs-12 col-sm-5 col-md-5 text-center">
+						<span
+							className={addButton.class}
+							onClick={this.toggleFavorite}
+							aria-hidden="true"
+						>
+							{addButton.text}
+						</span>
+					</div>
+				</div>
+
 			</div>
 		);
 	}

@@ -100,8 +100,11 @@ export default class App extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h1>Enter the name of your favourite location</h1>
+			<div className="container">
+				<h1>Favourite locations</h1>
+				<h5 className="text-center text-muted">
+				Enter the name of your favourite location in the form below
+				</h5>
 				<Search onSearch={this.searchForAddress} />
 				<Map
 					lat={this.state.mapCoordinates.lat}

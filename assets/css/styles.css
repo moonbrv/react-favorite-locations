@@ -1,60 +1,42 @@
-.container {
-	max-width: 980px;
-	text-align: center;
-	margin: 20px auto;
-}
+/********************************
+      GENERAL STYLES
+********************************/
 
 h1 {
-	margin-bottom: 20px;
+	font-size: 36px;
+	text-align: center;
 }
 
-#geocoding_form {
-	margin: 40px auto 60px;
+@media (max-width: 450px) {
+	h1 {
+		font-size: 30px;
+	}
 }
 
-#address {
-	border-radius: 3px;
-}
-
-.input-group {
-	margin: 0 auto;
-}
-
-.glyphicon {
-	font-size: 18px;
-	z-index: 20;
-	cursor: pointer;
-}
-
-.glyphicon-search{
-	position: relative;
-	right: 30px;
-}
-
-.current-location {
+h5 {
 	margin-top: 30px;
 }
 
-#save-location {
-	display: inline;
-	margin: 10px auto;
-	line-height: 1.4;
+.to-github {
+	margin: 50px auto 30px auto;
+	height: 18px;
+	max-width: 100px;
+	display: block;
+	background: transparent url('../img/github.svg') no-repeat center center;
+	background-size: contain;
 }
 
-.current-location .glyphicon-star, 
-.current-location .glyphicon-star-empty {
-	display: inline-block;
-	margin-left: 10px;
-	font-size: 22px;
-	vertical-align: text-bottom;
+/********************************
+      CURRENT LOCATION COMPONENT
+********************************/
+
+.current-location {
+	padding: 10px 0;
 }
 
-.glyphicon-menu-right {
-	position: absolute;
-	top: 50%;
-	right: 10px;
-	margin-top: -9px;
-}
+/********************************
+      MAP COMPONENT
+********************************/
 
 .map-holder {
 	max-width: 500px;
@@ -82,9 +64,20 @@ h1 {
 	margin: 0 auto;
 }
 
+/********************************
+      LOCATION LIST COMPONENT
+********************************/
+
+.glyphicon-menu-right {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	margin-top: -9px;
+}
+
 .list-group {
 	padding: 0 15px;
-	margin-top: 50px;
+	margin-top: 30px;
 }
 
 .list-group-item {
@@ -112,13 +105,4 @@ h1 {
 	display: block;
 	color: #969FA8;
 	z-index: -1;
-}
-
-.to-github {
-	margin: 50px auto 30px auto;
-	height: 18px;
-	max-width: 100px;
-	display: block;
-	background: transparent url('../img/github.svg') no-repeat center center;
-	background-size: contain;
 }

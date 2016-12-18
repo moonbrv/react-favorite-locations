@@ -34,13 +34,13 @@ export default class Search extends React.Component {
 						<div className="input-group">
 							<input
 								type="text"
-								className="form-control"
+								className="form-control input-lg"
 								id="address"
 								placeholder="Find a location..."
 								value={this.state.value}
 								onChange={this.handleChange}
 							/>
-							<span className="input-group-btn">
+							<span className="input-group-addon">
 								<span className="glyphicon glyphicon-search" aria-hidden="true" />
 							</span>
 						</div>
