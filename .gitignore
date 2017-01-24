@@ -3,6 +3,9 @@
 # public directory
 devbuild
 
+# editor directory
+.vscode
+
 ### Node ###
 # Logs
 logs
