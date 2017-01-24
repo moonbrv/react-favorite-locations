@@ -55,7 +55,7 @@
     "test:watch": "NODE_ENV=test mocha ./test/helpers/browser.js ./test/**/*.test.js --compilers js:babel-register --watch",
     "dev": "webpack-dev-server --config ./webpack.config.dev.js --hot --inline",
     "build": "webpack --config ./webpack.production.config.js",
-    "start": "run -p dev test:watch"
+    "start": "run-p dev test:watch"
   },
   "author": "Dmitry Palamarchuk <moonbrv@gmail.com> (https://github.com/moonbrv)",
   "homepage": "https://github.com/moonbrv/react-favourite-locations",
