@@ -39,7 +39,7 @@ describe('Testing component: App', () => {
 
 	it('contains .glyphicon', () => {
 		wrapper = mount(<App/>);
-		expect(wrapper.find('.glyphicon')).to.have.length(2);
+		expect(wrapper.find('.glyphicon')).to.have.length(1);
 	});
 
 });

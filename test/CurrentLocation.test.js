@@ -7,7 +7,7 @@ import sinon from 'sinon';
 import CurrentLocation from './../assets/js/components/CurrentLocation';
 
 describe('Testing component: CurrentLocation', () => {
-	
+
 	let testPlaceOne = {
 		address: 'Kiev',
 		favorite: true,
@@ -17,9 +17,9 @@ describe('Testing component: CurrentLocation', () => {
 
 	describe('Testing DOM element render', () => {
 
-		it('Have a .glyphicon', () => {
+		it('Have a button', () => {
 			const wrapper = shallow(<CurrentLocation/>)
-			expect(wrapper.find('.glyphicon')).to.have.length(1); 
+			expect(wrapper.find('.btn')).to.have.length(1);
 		});
 
 	});
@@ -29,12 +29,12 @@ describe('Testing component: CurrentLocation', () => {
 
 		beforeEach(() => {
 			wrapper = mount(
-				<CurrentLocation 
+				<CurrentLocation
 					address={testPlaceOne.address}
 					favorite={testPlaceOne.favorite}
 					onFavoriteToggle={onClick}
 				/>
-			);	
+			);
 		});
 
 		it('Have a property favorite equal true', () => {
@@ -42,7 +42,7 @@ describe('Testing component: CurrentLocation', () => {
 		});
 
 		it('Call onFavoriteToggle once', () => {
-			wrapper.find('.glyphicon').simulate('click');
+			wrapper.find('.btn').simulate('click');
 			expect(onClick.calledOnce).to.equal(true);
 		});
 
