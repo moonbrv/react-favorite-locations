@@ -1,6 +1,6 @@
 {
   "name": "React-favourite-locations-app",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "webpack.config.js",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
