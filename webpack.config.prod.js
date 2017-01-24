@@ -10,6 +10,10 @@ const path = require('path');
 const NODE_ENV = process.env.NODE_ENV || 'production';
 
 module.exports = {
+	target: 'web',
+	debug: true,
+	devtool: 'source-map',
+	noInfo: true,
 	resolve: {
 		extensions: ['', '.html', '.js', '.css', '.json'],
 	},
@@ -25,8 +29,6 @@ module.exports = {
 		filename: '[name].bundle-[hash:6].js',
 		chunkFilename: '[id].bundle-[hash:6].js',
 	},
-
-	devtool: null,
 
 	module: {
 		preLoaders: [
@@ -110,8 +112,7 @@ module.exports = {
 		}),
 
 		new HtmlWebpackPlugin({
-			template: path.join(__dirname, '/assets/index.tmpl.html'),
-			filename: path.join(__dirname, '/dist/index.html'),
+			template: path.join(__dirname, '/assets/index.html'),
 		}),
 		new webpack.DefinePlugin({
 			NODE_ENV: JSON.stringify(NODE_ENV),

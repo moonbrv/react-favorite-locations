@@ -7,6 +7,10 @@ const path = require('path');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
+	target: 'web',
+	debug: true,
+	devtool: 'eval-source-map',
+	noInfo: true,
 	resolve: {
 		extensions: ['', '.js', '.css', '.json'],
 	},
@@ -22,8 +26,6 @@ module.exports = {
 		filename: '[name].bundle.js',
 		chunkFilename: '[id].bundle.js',
 	},
-
-	devtool: 'cheap-module-source-map',
 
 	devServer: {
 		contentBase: path.join(__dirname, '/assets'),
@@ -63,8 +65,8 @@ module.exports = {
 			},
 			{ // copy glyph-icons fonts
 				test: /\.(ttf|eot|svg|woff|woff2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-				include:/node_modules\/bootstrap\/dist/,
-				loader: 'file?name=[1]&regExp=node_modules/bootstrap/dist/(.*)'
+				include: /node_modules\/bootstrap\/dist/,
+				loader: 'url-loader?limit=120000',
 			},
 			{ // copy images from assets to public with its original paths and name
 				test: /\.(jpg|png|svg)$/,
@@ -91,8 +93,7 @@ module.exports = {
 
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.join(__dirname, '/assets/index.tmpl.html'),
-			filename: path.join(__dirname, '/devbuild/index.html'),
+			template: path.join(__dirname, '/assets/index.html'),
 		}),
 		new webpack.DefinePlugin({
 			NODE_ENV: JSON.stringify(NODE_ENV),
